@@ -3,8 +3,10 @@ import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import Sdata from './Sdata';
-
+import { Link } from 'react-router-dom';
+// {handleAddService, services}
 const Card = () => {
+  // console.log(object);
   const settings = {
     dots: true,
     infinite: true,
@@ -29,7 +31,9 @@ const Card = () => {
     <p>If a dog chews shoes whose shoes does he choose?</p>
     <div className="card-actions flex justify-between">
     <div className='text-[24px] font-bold text-[#000000]'>$495.00</div>
+    <Link to={`/services/${data._id}`}>
     <button className="btn btn-success">Add To Cart</button>
+    </Link>
     </div>
   </div>
 </div>

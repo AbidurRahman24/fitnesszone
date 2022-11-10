@@ -1,18 +1,18 @@
 import React from 'react';
 import { useMotionValue, useTransform, motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import Tdata from './Tdata';
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import Sdata from './Sdata';
-import { Link } from 'react-router-dom';
 
-const ServiceCard = () => {
+const TranningCard = () => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 1000,
     slidesToShow: 3,
-    slidesToScroll: 2,
+    slidesToScroll: 3,
     // nextArrow: <SampleNextArrow />,
     // prevArrow: <SamplePrevArrow />,
 }
@@ -30,14 +30,14 @@ const ServiceCard = () => {
   ];
   return (
     <>
-     <Slider {...settings}>
-     {Sdata.productItems.map((data) => {
+ <Slider {...settings}>
+     {Tdata.map((data) => {
       return(
         
         // console.log(data);
       
     
-      <div style={{ perspective: 2000 }}>
+      <div  style={{ perspective: 2000 }} >
         {/* card */}
         <motion.div
           style={{ x, y, rotateX, rotateY, z: 100 }}
@@ -49,7 +49,7 @@ const ServiceCard = () => {
         >
           {/* card logo */}
           <div className='mb-6'>
-            <img src={data.LogoImg} style={{ height: '40px' }} alt='' />
+            <img src={data.logo} style={{ height: '40px' }} alt='' />
           </div>
           {/* card title */}
           <h1 className='text-4xl mb-4 font-extrabold'>{data.name}</h1>
@@ -62,7 +62,7 @@ const ServiceCard = () => {
           {/* btn & price wrapper */}
           <div className='flex items-center gap-x-[20px] mb-10'>
             <Link to={'/ds'}  className='bg-[#2d2b2c] text-white text-base font-small py-[12px] px-[16px] rounded-lg hover:cursor-pointer'>
-              Add to Cart
+              Enroll now
             </Link>
             <div className='text-[24px] font-bold text-[#000000]'>$495.00</div>
           </div>
@@ -83,14 +83,14 @@ const ServiceCard = () => {
             style={{ x, y, rotateX, rotateY, z: 100000 }}
             className='absolute top-4 -right-20 w-[320px]'
           >
-            <img src={data.cover} alt='' draggable='false' />
+            <img src={data.productimg} alt='' draggable='false' />
           </motion.div>
         </motion.div>
       </div>
        )})}
-      </Slider>
+       </Slider>
     </>
   );
 };
 
-export default ServiceCard;
+export default TranningCard;

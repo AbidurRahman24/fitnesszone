@@ -1,8 +1,17 @@
+import { signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { FaPhoneAlt, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 
 
 const Head = () => {
+  const [user] = useAuthState(auth)
+
+  const handleSignOut = () =>{
+    signOut(auth)
+  }
+  // console.log(user.email)
     return (
         <>
             <div className="navbar p-0 min-h-0 ">
@@ -14,8 +23,13 @@ const Head = () => {
   </div>
   <div className="flex-none">
   <div className='icon  width flex sm:aline-center '>
+    {user ? 
+    <button onClick={handleSignOut}>sign out</button>  
+    :
+    <Link to={'/login'}>login</Link>
+  }
             <button className="btn btn-ghost btn-circle">
-      <FaUser />
+      {/* {user ? <p>{user.email}</p>: <FaUser />} */}
     </button>
             <div className='cart pl-4'>
               <Link to='/cart'>
