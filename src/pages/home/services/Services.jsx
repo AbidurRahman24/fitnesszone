@@ -6,15 +6,15 @@ const Services = () => {
   const [card, setCard] = useState([])
     // const [product, setProduct] = useServices()
     const [services, setServices] = useState([])
-
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/services')
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             setServices(data)
-    //         })
-    // }, [])
+    console.log(services);
+    useEffect(() => {
+        fetch('http://localhost:5000/services')
+            .then(response => response.json())
+            .then(data => {
+             
+                setServices(data)
+            })
+    }, [])
     const handleAddService = (service) => {
         const newCard = [...card, service]
         setCard(newCard)
@@ -33,11 +33,19 @@ const Services = () => {
                 </div>
          
         </div>
-        <Card 
-        // key={_id}
+        <div className='flex flex-wrap'>
+        {
+          services.map((service )=> (<>
+<Card 
+        key={service._id}
         handleAddService={handleAddService}
-        services={services}
+        service={service}
         />
+        </>
+          ))
+        }
+        </div>
+        
         </section>
     );
 };
