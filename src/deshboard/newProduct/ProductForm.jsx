@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 const ProductForm = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => {
+    console.log(data)
     // data.preventDefault();
     const url = `http://localhost:5000/addService`;
     fetch(url, {
@@ -33,7 +34,7 @@ const ProductForm = () => {
               <input className="p-2 mt-2 rounded-xl border" type="title" name="title" placeholder="title" {...register("title", { required: true })} />
               <textarea className="p-2 mt-2 rounded-xl border" type="description" name="description" placeholder="description" {...register("description", { required: true })} />
               <input className="p-2 mt-2 rounded-xl border" type="number" name="price" placeholder="price" {...register("price", { required: true })} />
-              <input type="file" className="file-input file-input-bordered w-full max-w-xs" {...register("image", { required: true })} />
+              {/* <input type="file" name="file" className="file-input file-input-bordered w-full max-w-xs" {...register("file", { required: true })} /> */}
               <button className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Add product</button>
             </form>
 
