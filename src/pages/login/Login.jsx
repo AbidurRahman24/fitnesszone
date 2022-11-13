@@ -31,25 +31,25 @@ const Login = () => {
     console.log(event.target.value);
     event.preventDefault();
     await signInWithEmailAndPassword(email, password);
-    // fetch('http://localhost:5000/login', {
-    //     method: 'POST', // or 'PUT'
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ email }),
-    // })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         console.log(data);
-    //         localStorage.setItem('token', data.token);
-    //         navigate(from, { replace: true });
-    //     })
-    //     .catch((error) => {
-    //         // console.error('Error:', error);
-    //     });
+    fetch('http://localhost:5000/login', {
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            localStorage.setItem('token', data.token);
+            navigate(from, { replace: true });
+        })
+        .catch((error) => {
+            // console.error('Error:', error);
+        });
   }
   if (user) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   }
   return (
     <>

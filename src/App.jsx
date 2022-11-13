@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import Deshboard from './deshboard/deshboard/Deshboard';
+import MyOrder from './deshboard/myorder/MyOrder';
 import NewProduct from './deshboard/newProduct/NewProduct';
 import Home from './pages/home/home/Home';
 import Login from './pages/login/Login';
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="signup" element={<SignUp />} />
         <Route path="deshboard" element={<Deshboard />} />
         <Route path="addproduct" element={<NewProduct />} />
+        <Route path="myorder" element={<RequireAuth> <MyOrder /></RequireAuth> } />
       </Routes>
     </BrowserRouter>
     

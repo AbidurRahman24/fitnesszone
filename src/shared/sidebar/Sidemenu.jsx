@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { FaAlignLeft, FaChartLine, FaFacebookMessenger, FaFileAlt, FaHouseUser, FaQrcode, FaRegHeart, FaShoppingCart, FaUserCog } from "react-icons/fa";
+import { FaAlignLeft, FaChartLine, FaFacebookMessenger, FaFileAlt, FaFirstOrderAlt, FaHouseUser, FaQrcode, FaRegHeart, FaShoppingCart, FaUserCog } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const Sidemenu = () => {
     const menus = [
         {name:'Deshboard', link:'/deshboard', icon: FaQrcode},
         {name:'User', link:'/addproduct', icon: FaHouseUser},
-        {name:'Messages', link:'/', icon: FaFacebookMessenger},
+        {name:'My order', link:'/myorder', icon: FaFirstOrderAlt},
         {name:'Analytics', link:'/', icon: FaChartLine, margin:true},
         {name:'File Manager', link:'/', icon: FaFileAlt},
         {name:'Cart', link:'/', icon: FaShoppingCart},
