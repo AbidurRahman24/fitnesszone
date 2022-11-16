@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-const MyorderTable = () => {
+const MyorderTable = ({order}) => {
+  console.log(order);
 //     const [myOrder, setMyOrder] = useState([])
 
 //   useEffect(() => {
@@ -45,17 +46,17 @@ const MyorderTable = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Hart Hagerty</div>
-              <div className="text-sm opacity-50">United States</div>
+              <div className="font-bold">{order.name}</div>
+              <div className="text-sm opacity-50">{order.address}</div>
             </div>
           </div>
         </td>
         <td>
-          Zemlak, Daniel and Leannon
+          {order.service}
           <br/>
-          <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+          <span className="badge badge-ghost badge-sm">{order._id}</span>
         </td>
-        <td>Purple</td>
+        <td>{order.email}</td>
         <th>
           <button className="btn btn-ghost btn-xs">details</button>
         </th>

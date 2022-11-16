@@ -10,6 +10,7 @@ const Head = () => {
 
   const handleSignOut = () =>{
     signOut(auth)
+    localStorage.removeItem('token')
   }
   // console.log(user.email)
     return (

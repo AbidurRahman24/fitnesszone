@@ -1,10 +1,12 @@
 import React from 'react'
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
+import AllUser from './deshboard/alluser/AllUser';
 import Deshboard from './deshboard/deshboard/Deshboard';
 import MyOrder from './deshboard/myorder/MyOrder';
 import NewProduct from './deshboard/newProduct/NewProduct';
 import Home from './pages/home/home/Home';
 import Login from './pages/login/Login';
+import RequireAdmin from './pages/requireAuth/RequireAdmin';
 import RequireAuth from './pages/requireAuth/RequireAuth';
 import Shipment from './pages/shipment/Shipment';
 import SignUp from './pages/signup/SignUp';
@@ -21,6 +23,7 @@ const App = () => {
         <Route path="signup" element={<SignUp />} />
         <Route path="deshboard" element={<Deshboard />} />
         <Route path="addproduct" element={<NewProduct />} />
+        <Route path="alluser" element={<RequireAdmin> <AllUser /></RequireAdmin> } />
         <Route path="myorder" element={<RequireAuth> <MyOrder /></RequireAuth> } />
       </Routes>
     </BrowserRouter>

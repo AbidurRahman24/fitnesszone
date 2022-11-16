@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { FaAlignLeft, FaChartLine, FaFacebookMessenger, FaFileAlt, FaFirstOrderAlt, FaHouseUser, FaQrcode, FaRegHeart, FaShoppingCart, FaUserCog } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
+import useAdmin from '../../hooks/useAdmin';
 
 const Sidemenu = () => {
+  const [user] = useAuthState(auth)
+  const [admin] = useAdmin(user)
     const menus = [
         {name:'Deshboard', link:'/deshboard', icon: FaQrcode},
-        {name:'User', link:'/addproduct', icon: FaHouseUser},
+        {name:'Add Product', link:'/addproduct', icon: FaHouseUser},
         {name:'My order', link:'/myorder', icon: FaFirstOrderAlt},
-        {name:'Analytics', link:'/', icon: FaChartLine, margin:true},
+        {name:'All user', link:'/alluser', icon: FaHouseUser, margin:true},
         {name:'File Manager', link:'/', icon: FaFileAlt},
         {name:'Cart', link:'/', icon: FaShoppingCart},
         {name:'Saved', link:'/', icon: FaRegHeart, margin: true},

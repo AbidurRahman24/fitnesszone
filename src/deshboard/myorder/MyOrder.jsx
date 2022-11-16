@@ -10,7 +10,7 @@ import MyorderTable from './MyorderTable';
 const MyOrder = () => {
     const [user] = useAuthState(auth)
     const [order, setOrder] = useState([])
-    console.log(order);
+    // console.log(order);
     const navigate = useNavigate();
     useEffect(()=>{
       const getOrders = async() =>{
@@ -24,7 +24,9 @@ const MyOrder = () => {
             console.log(error.message);
             if(error.response.status === 401 || error.response.status === 403){
                 signOut(auth);
+                localStorage.removeItem('token')
                 navigate('/login')
+
             }
         }
     }
@@ -36,7 +38,10 @@ const MyOrder = () => {
                 <Sidemenu/>
                 <div className="m-3 text-xl text-gray-900 font-semibold">
                 <h1>This is order page:{order.length}</h1>
-                   <MyorderTable />
+                {
+                    order.map(order =><MyorderTable  order={order}/> )
+                }
+                   
                 </div>
             </section>   
         </>
