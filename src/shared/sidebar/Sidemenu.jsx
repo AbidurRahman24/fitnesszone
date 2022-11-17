@@ -42,6 +42,9 @@ const Sidemenu = () => {
         </Link>
             )
         }
+        {
+          admin && <Link to='/alluser'>user</Link>
+        }
       </div>
     </div>   
         </>

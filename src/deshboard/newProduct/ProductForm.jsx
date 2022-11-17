@@ -1,23 +1,57 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { toast, ToastContainer } from 'react-toastify';
 
 const ProductForm = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => {
-    console.log(data)
+  const { register, handleSubmit, watch, formState: { errors } , reset} = useForm();
+  const imageStorageKey = 'a42e086b9c61dbdc3bebdf53a3a9e5e6'
+  const onSubmit = async(data) => {
+
+    const image = data.image[0];
+    const formData = new FormData()
+    formData.append('image', image)
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`
+    // console.log(data)
     // data.preventDefault();
-    const url = `http://localhost:5000/addService`;
+    // const url = `http://localhost:5000/addService`;
     fetch(url, {
       method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(data)
+      // headers: {
+      //   'content-type': 'application/json'
+      // },
+      body: formData
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result)
-        window.location.reload();
+        if(result.success){
+          const img = result.data.url
+          const product = {
+            title : data.title,
+            description: data.description,
+            price: data.price,
+            img: img
+          }
+          fetch('http://localhost:5000/addService',{
+            method: "POST",
+            headers:{
+              'content-type': 'application/json',
+              authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(product)
+          })
+          .then(res => res.json())
+          .then(inserted =>{
+            if(inserted.insertedId){
+              toast.success('Service added succesfully')
+              reset()
+            }
+            else{
+              toast.error('Service not added')
+            }
+            // console.log('product',inserted);
+          })
+        }
+        // window.location.reload();
       })
   };
 
@@ -34,7 +68,7 @@ const ProductForm = () => {
               <input className="p-2 mt-2 rounded-xl border" type="title" name="title" placeholder="title" {...register("title", { required: true })} />
               <textarea className="p-2 mt-2 rounded-xl border" type="description" name="description" placeholder="description" {...register("description", { required: true })} />
               <input className="p-2 mt-2 rounded-xl border" type="number" name="price" placeholder="price" {...register("price", { required: true })} />
-              {/* <input type="file" name="file" className="file-input file-input-bordered w-full max-w-xs" {...register("file", { required: true })} /> */}
+              <input type="file" name="file" className="file-input file-input-bordered w-full max-w-xs" {...register("image", { required: true })} />
               <button className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Add product</button>
             </form>
 
@@ -44,6 +78,7 @@ const ProductForm = () => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </>
   );
 };
