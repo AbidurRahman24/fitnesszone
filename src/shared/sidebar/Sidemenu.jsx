@@ -10,7 +10,7 @@ const Sidemenu = () => {
   const [admin] = useAdmin(user)
     const menus = [
         {name:'Deshboard', link:'/deshboard', icon: FaQrcode},
-        {name:'Add Product', link:'/addproduct', icon: FaHouseUser},
+        {name:'Add Service', link:'addservice', icon: FaHouseUser},
         {name:'My order', link:'/myorder', icon: FaFirstOrderAlt},
         {name:'All user', link:'/alluser', icon: FaHouseUser, margin:true},
         {name:'File Manager', link:'/', icon: FaFileAlt},
@@ -43,7 +43,12 @@ const Sidemenu = () => {
             )
         }
         {
-          admin && <Link to='/alluser'>user</Link>
+          admin &&<>
+          <Link to='/alluser'>user</Link>
+          <Link to='/addservice'>Add Services</Link>
+          <Link to='/manageservice'>Manage Services</Link>
+          
+          </>
         }
       </div>
     </div>   
