@@ -6,12 +6,14 @@ const CheckoutForm = ({ data }) => {
     const elements = useElements();
     const [cardError, setCardError] = useState('')
     const [success, setSuccess] = useState('')
+    const [proceesing, setProceesing] = useState(false)
+    const [transectionId, setTransectionId] = useState('')
     const [clientSecret, setClientSecret] = useState("");
 
-    const { price, name, email } = data
-
+    const {_id, price, name, email } = data
+    // console.log(data)
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-inten', {
+        fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -24,21 +26,28 @@ const CheckoutForm = ({ data }) => {
                 if (paymentdata?.clientSecret) {
                     setClientSecret(paymentdata.clientSecret)
                 }
-                console.log(paymentdata)
             })
     }, [price])
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (elements == null) {
+        if (!stripe || !elements) {
+            return;
+        }
+
+        const card = elements.getElement(CardElement)
+
+        if (card === null) {
             return;
         }
 
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
-            card: elements.getElement(CardElement),
+            card
         });
         setCardError(error?.message || '');
         setSuccess('')
+        setProceesing(true)
 
         //   confirm payment
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
@@ -55,10 +64,32 @@ const CheckoutForm = ({ data }) => {
         );
         if (intentError) {
             setCardError(intentError?.message)
+            setProceesing(false)
         } else {
             setCardError('')
-            console.log(intentError);
+            setTransectionId(paymentIntent.id)
+            console.log(paymentIntent);
             setSuccess('Congragets your payment')
+
+            // store payment in database
+            const payment ={
+                service: _id,
+                transectionId: paymentIntent.id,
+
+            }
+            fetch(`http://localhost:5000/services/:${id}`,
+            {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify(payment)
+            }).then(res =>res.json())
+            .then(data =>{
+                setProceesing(false)
+                console.log(data);
+            })
         }
     }
     return (
@@ -73,7 +104,10 @@ const CheckoutForm = ({ data }) => {
                 cardError && <p className='text-red-500'>{cardError}</p>
             }
             {
-                success && <p className='text-green-500'>{success}</p>
+                success && <div className='text-green-500'>
+                    <p>{success}</p>
+                    <p>Your transection Id: <span className='text-orange-500'>{transectionId}</span></p>
+                </div>
             }
         </>
     );
