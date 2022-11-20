@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const ProductTable = () => {
@@ -9,7 +10,7 @@ const ProductTable = () => {
       .then(res => res.json())
       .then(data => {
         setProduct(data)
-        // console.log(data)
+        console.log(data)
       })
   }, [])
 
@@ -37,8 +38,10 @@ const ProductTable = () => {
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Payment</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -47,10 +50,14 @@ const ProductTable = () => {
                 // console.log(product._id);
 
                 <tr key={product._id}>
-                  <th>{product._id}</th>
-                  <td>{product.email}</td>
                   <td>{product.service}</td>
+                  <td>{product.email}</td>
                   <td>{product.address}</td>
+                  <td>
+                    {(product.price && !product.paid ) && <Link to={`/payment/${product._id}`}><button className='btn btn-xs btn-success'>PAY</button></Link>}
+                    {(product.price && product.paid ) && <span className='text-success'>PAID</span>}
+                    
+                    </td>
                   <td><button onClick={()=>handleDelete(product._id)}>X</button></td>
                 </tr>
              ))

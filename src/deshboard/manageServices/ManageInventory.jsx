@@ -36,7 +36,7 @@ const ManageServices = () => {
       </tr>
     </thead>
     <tbody>
-      {manage.map((manageservice, index) => <ManageRow manage={manage} key={manageservice._id} index={index} setManage={setManage}  manageservice={manageservice}/>)}
+      {manage?.map((manageservice, index) => <ManageRow manage={manage} key={manageservice._id} index={index} setManage={setManage}  manageservice={manageservice}/>)}
     </tbody>
   </table>
 </div>

@@ -32,6 +32,7 @@ const Shipment = () => {
             name: event.target.name.value,
             email: user.email,
             service: singleProduct.title,
+            price: singleProduct.price,
             serviceId: serviceId,
             address: event.target.address.value,
             price: singleProduct.price

@@ -5,6 +5,7 @@ import Deshboard from './deshboard/deshboard/Deshboard';
 import ManageServices from './deshboard/manageServices/ManageInventory';
 import MyOrder from './deshboard/myorder/MyOrder';
 import NewProduct from './deshboard/newProduct/NewProduct';
+import Payment from './deshboard/payment/Payment';
 import Home from './pages/home/home/Home';
 import Login from './pages/login/Login';
 import RequireAdmin from './pages/requireAuth/RequireAdmin';
@@ -20,6 +21,7 @@ const App = () => {
      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services/:serviceId" element={<RequireAuth><Shipment /></RequireAuth>} />
+        <Route path="/payment/:id" element={<RequireAuth><Payment /></RequireAuth>} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="deshboard" element={<Deshboard />} />
