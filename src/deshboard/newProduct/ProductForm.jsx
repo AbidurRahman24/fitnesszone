@@ -48,10 +48,8 @@ const ProductForm = () => {
             else{
               toast.error('Service not added')
             }
-            // console.log('product',inserted);
           })
         }
-        // window.location.reload();
       })
   };
 

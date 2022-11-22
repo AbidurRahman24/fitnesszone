@@ -1,11 +1,14 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import logo from '../assets/logo.png'
 
 const MainNav = () => {
+  const [user] = useAuthState(auth)
     return (
         <>
-          <div className="navbar bg-base-100 drop-shadow-xl">
+          <div className="navbar bg-base-100 drop-shadow-xl ">
   <div className="navbar-start">
     <div className="dropdown ">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -17,6 +20,7 @@ const MainNav = () => {
       <li><a>Blogs</a></li>
       <li><a>Shops</a></li>
       <li><a>Contact</a></li>
+      {user && <li><Link to={'/deshboard'}>Deshboard</Link></li>}
       </ul>
     </div>
     <Link to={'/'}>
@@ -30,6 +34,7 @@ const MainNav = () => {
       <li><a>Blogs</a></li>
       <li><a>Shops</a></li>
       <li><a>Contact</a></li>
+      {user && <li><Link to={'/deshboard'}>Deshboard</Link></li>}
     </ul>
   </div>
 </div>  

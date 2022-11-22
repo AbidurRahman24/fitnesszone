@@ -4,17 +4,15 @@ import Card from './Card';
 
 const Services = () => {
   const [card, setCard] = useState([])
-    // const [product, setProduct] = useServices()
-    const [services, setServices] = useState([])
-    console.log(services);
-    useEffect(() => {
-        fetch('http://localhost:5000/services')
-            .then(response => response.json())
-            .then(data => {
-             
-                setServices(data)
-            })
-    }, [])
+  const [services, setServices] = useState([])
+  useEffect(() => {
+    fetch('http://localhost:5000/services')
+      .then(response => response.json())
+      .then(data => {
+
+        setServices(data)
+      })
+  }, [])
     const handleAddService = (service) => {
         const newCard = [...card, service]
         setCard(newCard)

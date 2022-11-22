@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { FaAlignLeft, FaChartLine, FaFacebookMessenger, FaFileAlt, FaFirstOrderAlt, FaHouseUser, FaQrcode, FaRegHeart, FaShoppingCart, FaUserCog } from "react-icons/fa";
+import { FaAlignLeft, FaChartLine, FaFacebookMessenger, FaFileAlt, FaFirstOrderAlt, FaHouseUser, FaQrcode, FaRegHeart, FaShoppingCart, FaStreetView, FaUserCog } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
@@ -13,7 +13,7 @@ const Sidemenu = () => {
         {name:'Add Service', link:'addservice', icon: FaHouseUser},
         {name:'My order', link:'/myorder', icon: FaFirstOrderAlt},
         {name:'All user', link:'/alluser', icon: FaHouseUser, margin:true},
-        {name:'File Manager', link:'/', icon: FaFileAlt},
+        {name:'Review', link:'/review', icon: FaStreetView},
         {name:'Cart', link:'/', icon: FaShoppingCart},
         {name:'Saved', link:'/', icon: FaRegHeart, margin: true},
         {name:'Setting', link:'/', icon: FaUserCog},

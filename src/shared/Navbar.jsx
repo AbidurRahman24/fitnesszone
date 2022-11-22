@@ -5,7 +5,7 @@ import MainNav from './MainNav';
 const Navbar = () => {
     return (
         <>
-            <div className='container mx-auto'>
+            <div className='container mx-auto '>
                 <Head />
                 <MainNav />
             </div>
