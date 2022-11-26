@@ -8,7 +8,7 @@ const MainNav = () => {
   const [user] = useAuthState(auth)
     return (
         <>
-          <div className="navbar bg-base-100 drop-shadow-xl ">
+          <div className="navbar bg-base-100 ">
   <div className="navbar-start">
     <div className="dropdown ">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -32,7 +32,7 @@ const MainNav = () => {
       <li><Link to={'/home'}>Home</Link></li>
       <li><a>About</a></li>
       <li><a>Blogs</a></li>
-      <li><a>Shops</a></li>
+      <li><Link to={'/shop'}>Shops</Link></li>
       <li><a>Contact</a></li>
       {user && <li><Link to={'/deshboard'}>Deshboard</Link></li>}
     </ul>

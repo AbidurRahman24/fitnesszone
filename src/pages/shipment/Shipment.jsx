@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../../firebase.init';
@@ -15,7 +15,6 @@ const Shipment = () => {
         fetch(`http://localhost:5000/services/${serviceId}`)
             .then(response => response.json())
             .then(data => {
-                // console.log(data);
                 setSingleProduct(data)
             })
     }, [serviceId])
@@ -34,10 +33,8 @@ const Shipment = () => {
             service: singleProduct.title,
             price: singleProduct.price,
             serviceId: serviceId,
-            address: event.target.address.value,
-            price: singleProduct.price
+            address: event.target.address.value || 'Bangladesh',
         }
-        // console.log(order)
         const url = `http://localhost:5000/placeOrder`;
         fetch(url, {
             method: 'POST',
@@ -48,16 +45,16 @@ const Shipment = () => {
         })
             .then((response) => response.json())
             .then((json) => {
-                // event.target.reset();
                 toast('Your order is booked!!!');
             });
         }
     return (
         <>
         <Navbar />
-         
-         <section className="bg-gray-50 min-h-screen flex items-center justify-center p-10 ">
+        
 
+         <section className="bg-gray-50 min-h-screen flex items-center justify-center p-10 ">
+         
         {/* <!-- login container --> */}
         <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
           {/* <!-- form --> */}
@@ -81,6 +78,7 @@ const Shipment = () => {
         </div>
         <ToastContainer />
       </section>
+      
         </>
     );
 };

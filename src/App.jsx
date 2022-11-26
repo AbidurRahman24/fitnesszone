@@ -7,6 +7,7 @@ import MyOrder from './deshboard/myorder/MyOrder';
 import NewProduct from './deshboard/newProduct/NewProduct';
 import Payment from './deshboard/payment/Payment';
 import Reviews from './deshboard/reviews/Reviews';
+import Shop from './pages/about/shops/Shops';
 import Home from './pages/home/home/Home';
 import Login from './pages/login/Login';
 import RequireAdmin from './pages/requireAuth/RequireAdmin';
@@ -21,6 +22,8 @@ const App = () => {
     <BrowserRouter>
      <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
         <Route path="/services/:serviceId" element={<RequireAuth><Shipment /></RequireAuth>} />
         <Route path="/payment/:id" element={<RequireAuth><Payment /></RequireAuth>} />
         <Route path="deshboard" element={<Deshboard />} />

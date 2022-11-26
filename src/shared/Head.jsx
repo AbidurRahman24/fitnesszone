@@ -14,7 +14,7 @@ const Head = () => {
   }
   return (
     <>
-      <div className="navbar p-0 min-h-0 ">
+      <div className="navbar p-0 min-h-0 drop-shadow-xl">
         <div className="flex-1">
           <a className="btn btn-ghost normal-case text-xl">
             <FaPhoneAlt />
