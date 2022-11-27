@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { FaAlignLeft, FaChartLine, FaFacebookMessenger, FaFileAlt, FaFirstOrderAlt, FaHouseUser, FaQrcode, FaRegHeart, FaShoppingCart, FaStreetView, FaUserCog } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
