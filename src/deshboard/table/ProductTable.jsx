@@ -6,24 +6,22 @@ const ProductTable = () => {
   const [product, setProduct] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/orders')
+    fetch('https://fitnesszone-server.vercel.app/orders')
       .then(res => res.json())
       .then(data => {
         setProduct(data)
-        console.log(data)
       })
   }, [])
 
   const handleDelete = (id) =>{
     const proceed = window.confirm('Are you sure?')
     if(proceed){
-        const url = `http://localhost:5000/order/${id}`
+        const url = `https://fitnesszone-server.vercel.app/order/${id}`
         fetch(url, {
             method: 'DELETE'
         })
         .then(res => res.json())
         .then(data =>{
-            // console.log(product);
             const remaining = product.filter(product => product._id !== id)
             setProduct(remaining)
         })
@@ -47,8 +45,6 @@ const ProductTable = () => {
           <tbody>
             {
               product.map(product => (
-                // console.log(product._id);
-
                 <tr key={product._id}>
                   <td>{product.service}</td>
                   <td>{product.email}</td>

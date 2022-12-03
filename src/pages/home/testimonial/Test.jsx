@@ -8,7 +8,7 @@ import { Pagination } from "swiper";
 const Test = () => {
   const [review, setReview] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://fitnesszone-server.vercel.app/review')
             .then(response => response.json())
             .then(data => {
              

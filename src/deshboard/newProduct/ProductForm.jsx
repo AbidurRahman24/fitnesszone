@@ -11,9 +11,8 @@ const ProductForm = () => {
     const formData = new FormData()
     formData.append('image', image)
     const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`
-    // console.log(data)
     // data.preventDefault();
-    // const url = `http://localhost:5000/addService`;
+    // const url = `https://fitnesszone-server.vercel.app/addService`;
     fetch(url, {
       method: 'POST',
       // headers: {
@@ -31,7 +30,7 @@ const ProductForm = () => {
             price: data.price,
             img: img
           }
-          fetch('http://localhost:5000/addService',{
+          fetch('https://fitnesszone-server.vercel.app/addService',{
             method: "POST",
             headers:{
               'content-type': 'application/json',

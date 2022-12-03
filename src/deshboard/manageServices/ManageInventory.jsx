@@ -4,9 +4,8 @@ import ManageRow from './ManageRow';
 
 const ManageServices = () => {
   const [manage, setManage] = useState([])
-  console.log(manage);
   useEffect(() => {
-      fetch('http://localhost:5000/manageservice',{
+      fetch('https://fitnesszone-server.vercel.app/manageservice',{
         headers:{
           authorization: `bearer ${localStorage.getItem('token')}`
         }

@@ -6,7 +6,7 @@ const Services = () => {
   const [card, setCard] = useState([])
   const [services, setServices] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/services')
+    fetch('https://fitnesszone-server.vercel.app/services')
       .then(response => response.json())
       .then(data => {
 

@@ -6,7 +6,7 @@ import Sidemenu from '../../shared/sidebar/Sidemenu';
 const Reviews = () => {
     const { register, handleSubmit, watch, formState: { errors } , reset} = useForm();
     const onSubmit = (data) => {
-    fetch('http://localhost:5000/review',{
+    fetch('https://fitnesszone-server.vercel.app/review',{
             method: "POST",
             headers:{
               'content-type': 'application/json',

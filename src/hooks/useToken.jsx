@@ -4,11 +4,10 @@ const useToken = user =>{
     const [token, setToken] = useState('');
 
     useEffect(()=>{
-        // console.log('user', user.user.email);
         const email = user?.user?.email
         const currentUser = {email: email}
         if(email){
-            fetch(`http://localhost:5000/user/${email}`,{
+            fetch(`https://fitnesszone-server.vercel.app/user/${email}`,{
                 method: 'PUT',
                 headers:{
                     'content-type': 'application/json'
@@ -21,7 +20,6 @@ const useToken = user =>{
                 const token = data.token
                 localStorage.setItem('token',token)
                 setToken(token)
-                console.log('iset data', data.token)
             })
         }
 

@@ -4,7 +4,7 @@ const useServices = () =>{
     const [product, setProduct] = useState([])
     
     useEffect(() => {
-        fetch('http://localhost:5000/order')
+        fetch('https://fitnesszone-server.vercel.app/order')
             .then(response => response.json())
             .then(data => {
                 setProduct(data)

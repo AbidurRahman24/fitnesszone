@@ -6,7 +6,7 @@ const ManageRow = ({ manageservice,manage, index, setManage }) => {
     const handleDelete = id =>{
         const proceed = window.confirm('Are you sure?')
         if(proceed){
-        fetch(`http://localhost:5000/manageservice/${id}`,{
+        fetch(`https://fitnesszone-server.vercel.app/manageservice/${id}`,{
             headers:{
               authorization: `bearer ${localStorage.getItem('token')}`
             },

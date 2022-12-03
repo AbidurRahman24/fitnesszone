@@ -11,9 +11,8 @@ const CheckoutForm = ({ data }) => {
     const [clientSecret, setClientSecret] = useState("");
 
     const {_id, price, name, email } = data
-    // console.log(data)
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://fitnesszone-server.vercel.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -68,7 +67,6 @@ const CheckoutForm = ({ data }) => {
         } else {
             setCardError('')
             setTransectionId(paymentIntent.id)
-            console.log(paymentIntent);
             setSuccess('Congragets your payment')
 
             // store payment in database
@@ -77,7 +75,7 @@ const CheckoutForm = ({ data }) => {
                 transectionId: paymentIntent.id,
 
             }
-            fetch(`http://localhost:5000/services/:${id}`,
+            fetch(`https://fitnesszone-server.vercel.app/services/:${id}`,
             {
                 method: 'PATCH',
                 headers: {
@@ -88,7 +86,6 @@ const CheckoutForm = ({ data }) => {
             }).then(res =>res.json())
             .then(data =>{
                 setProceesing(false)
-                console.log(data);
             })
         }
     }

@@ -10,18 +10,16 @@ import MyorderTable from './MyorderTable';
 const MyOrder = () => {
     const [user] = useAuthState(auth)
     const [order, setOrder] = useState([])
-    // console.log(order);
     const navigate = useNavigate();
     useEffect(()=>{
       const getOrders = async() =>{
         const email = user.email;
-        const url = `http://localhost:5000/myorder?email=${email}`;
+        const url = `https://fitnesszone-server.vercel.app/myorder?email=${email}`;
         try{
             const {data} = await axiosPrivate.get(url);
             setOrder(data);
         }
         catch(error){
-            console.log(error.message);
             if(error.response.status === 401 || error.response.status === 403){
                 signOut(auth);
                 localStorage.removeItem('token')

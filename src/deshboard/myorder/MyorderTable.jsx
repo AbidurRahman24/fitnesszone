@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 const MyorderTable = ({order}) => {
-  console.log(order);
 //     const [myOrder, setMyOrder] = useState([])
 
 //   useEffect(() => {
-//     fetch('http://localhost:5000/myorder')
+//     fetch('https://fitnesszone-server.vercel.app/myorder')
 //       .then(res => res.json())
 //       .then(data => {
 //         setMyOrder(data)
-//         console.log(data)
 //       })
 //   }, [])
     return (

@@ -40,7 +40,6 @@ const SignUp = () => {
   }
 
   const handleCreateUser = async (event) => {
-    // console.log(event);
     event.preventDefault();
 
 
@@ -62,7 +61,6 @@ const SignUp = () => {
   }
   if (token) {
     navigate('/');
-    // console.log('user', user);
   }
   return (
     <>

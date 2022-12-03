@@ -4,7 +4,7 @@ import { toast, ToastContainer } from 'react-toastify';
 const UserTable = ({user}) => {
     const {email, role} = user
   const makeAdmin = () =>{
-    fetch(`http://localhost:5000/user/admin/${email}`,{
+    fetch(`https://fitnesszone-server.vercel.app/user/admin/${email}`,{
         method:'PUT',
         headers:{
             authorization: `Bearer ${localStorage.getItem('token')}`
@@ -17,9 +17,6 @@ const UserTable = ({user}) => {
         return res.json()})
       .then(data => {
         if(data.modifiedCount > 0){
-
-            // setUser(data)
-            console.log(data)
             toast.success("Successfully make admin")
         }
       })

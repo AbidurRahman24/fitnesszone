@@ -8,11 +8,10 @@ import Navbar from '../../shared/Navbar';
 
 const Shipment = () => {
     const { serviceId } = useParams()
-    // console.log(serviceId)
     const [user] = useAuthState(auth)
     const [singleProduct, setSingleProduct] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${serviceId}`)
+        fetch(`https://fitnesszone-server.vercel.app/services/${serviceId}`)
             .then(response => response.json())
             .then(data => {
                 setSingleProduct(data)
@@ -35,7 +34,7 @@ const Shipment = () => {
             serviceId: serviceId,
             address: event.target.address.value || 'Bangladesh',
         }
-        const url = `http://localhost:5000/placeOrder`;
+        const url = `https://fitnesszone-server.vercel.app/placeOrder`;
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(order),

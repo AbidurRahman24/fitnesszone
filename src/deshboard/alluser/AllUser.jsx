@@ -6,7 +6,7 @@ const AllUser = () => {
   const [user, setUser] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/user', {
+    fetch('https://fitnesszone-server.vercel.app/user', {
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`
       }

@@ -8,7 +8,7 @@ const stripePromise = loadStripe('pk_test_51JRrBrJJw9W9jRGG1SeX3fyEczwUy3LRpIt2U
 
 const Payment = () => {
     const { id } = useParams()
-    const url = `http://localhost:5000/order/${id}`
+    const url = `https://fitnesszone-server.vercel.app/order/${id}`
     const [data, setData] = useState([])
     const {name, service,  email, price} = data
     useEffect(() => {
@@ -20,7 +20,6 @@ const Payment = () => {
         })
             .then(response => response.json())
             .then(result => {
-                console.log(result);
                 setData(result)
             })
     }, [])

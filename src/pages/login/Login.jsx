@@ -31,10 +31,9 @@ const Login = () => {
     setPassword(event.target.value);
   }
   const handleUserSignIn = async (event) => {
-    console.log(event.target.value);
     event.preventDefault();
     await signInWithEmailAndPassword(email, password);
-    fetch('http://localhost:5000/login', {
+    fetch('https://fitnesszone-server.vercel.app/login', {
         method: 'POST', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
@@ -43,12 +42,10 @@ const Login = () => {
     })
         .then((response) => response.json())
         .then((data) => {
-            // console.log(data);
             localStorage.setItem('token', data.token);
             navigate(from, { replace: true });
         })
         .catch((error) => {
-            // console.error('Error:', error);
         });
   }
   if (token) {

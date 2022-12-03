@@ -33,12 +33,7 @@ const TranningCard = () => {
  <Slider {...settings}>
      {Tdata.map((data) => {
       return(
-        
-        // console.log(data);
-      
-    
       <div  style={{ perspective: 2000 }} >
-        {/* card */}
         <motion.div
           style={{ x, y, rotateX, rotateY, z: 100 }}
           drag
@@ -47,19 +42,15 @@ const TranningCard = () => {
           whileTap={{ cursor: 'grabbing' }}
           className='w-[326px] min-h-[500px] bg-[#e4dfdc] rounded-[30px] border-[4px] border-white px-[40px] py-[20px] cursor-grab relative'
         >
-          {/* card logo */}
           <div className='mb-6'>
             <img src={data.logo} style={{ height: '40px' }} alt='' />
           </div>
-          {/* card title */}
           <h1 className='text-4xl mb-4 font-extrabold'>{data.name}</h1>
-          {/* card subtitle */}
           <p className='max-w-[300px] text-[#000000] mb-3'>
             Taking the classic look of heritage Nike Running into new realm, the
             Nike Air Max Pre-Day brings you a fast-paced look that's ready for
             today's world.
           </p>
-          {/* btn & price wrapper */}
           <div className='flex items-center gap-x-[20px] mb-10'>
             <Link to={'/ds'}  className='bg-[#2d2b2c] text-white text-base font-small py-[12px] px-[16px] rounded-lg hover:cursor-pointer'>
               Enroll now
