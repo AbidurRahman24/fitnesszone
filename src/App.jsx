@@ -14,8 +14,7 @@ import RequireAdmin from './pages/requireAuth/RequireAdmin';
 import RequireAuth from './pages/requireAuth/RequireAuth';
 import Shipment from './pages/shipment/Shipment';
 import SignUp from './pages/signup/SignUp';
-import Footer from './shared/footer/Footer';
-import Navbar from './shared/Navbar';
+import NotFound from './shared/notFound/NotFound';
 const App = () => {
   return (
     <>
@@ -34,6 +33,7 @@ const App = () => {
         <Route path="myorder" element={<RequireAuth> <MyOrder /></RequireAuth> } />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
     
