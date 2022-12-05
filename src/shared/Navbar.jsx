@@ -5,7 +5,7 @@ import MainNav from './MainNav';
 const Navbar = () => {
     return (
         <>
-            <div>
+            <div className=''>
                 <Head />
                 <MainNav />
             </div>

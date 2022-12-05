@@ -13,8 +13,10 @@ import Tranning from '../tranning/Tranning'
 const Home = () => {
   return (
     <>
-     <div className='container mx-auto drop-shadow-xl'>
+     <div className='bg-base-100'>
+     <div className='container mx-auto '>
      <Navbar/>
+     </div>
      </div>
     <div className="container mx-auto">
     {/* <Hero /> */}

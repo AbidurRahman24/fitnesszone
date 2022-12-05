@@ -24,9 +24,14 @@ const Head = () => {
         <div className="flex-none">
           <div className='icon  width flex sm:aline-center '>
             {user ?
-              <button onClick={handleSignOut}>sign out</button>
+              <>
+                <ul className="menu menu-vertical lg:menu-horizontal rounded-box">
+                  <li><a>Name: <span className="text-orange-500 ">{user.displayName}</span></a></li>
+                  <li><a><button onClick={handleSignOut}>sign out</button></a></li>
+                </ul>
+              </>
               :
-              <Link to={'/login'}>login</Link>
+              <Link className="aline-center" to={'/login'}>login</Link>
             }
             <button className="btn btn-ghost btn-circle">
             </button>

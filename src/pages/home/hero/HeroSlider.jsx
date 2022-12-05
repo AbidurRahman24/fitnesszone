@@ -18,7 +18,7 @@ const HeroSlider = () => {
     return (
         <div className="pt-5">
         <Swiper 
-        style={{width:'100%', }}
+        style={{width:'100%', height:'60%' }}
         pagination={{
           dynamicBullets: true,
         }}

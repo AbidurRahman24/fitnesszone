@@ -16,11 +16,11 @@ const Sidemenu = () => {
         <li><Link to={'/myorder'}>My order</Link></li>
         <li><Link to={'/review'}>Review</Link></li>
         {
-          admin ? <>
+         user && admin && <>
           <li><Link to={'/user'}>User</Link></li>
           <li><Link to={'/addservice'}>Add Services</Link></li>
           <li><Link to={'/manageservice'}>Manage Services</Link></li>
-          </>: ''
+          </>
         }
       </ul>
       {/*  */}

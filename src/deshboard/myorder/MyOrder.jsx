@@ -36,9 +36,27 @@ const MyOrder = () => {
                 <Sidemenu/>
                 <div className="m-3 text-xl text-gray-900 font-semibold">
                 <h1>This is order page:{order.length}</h1>
-                {
+                <div className="overflow-x-auto w-full">
+        <table className="table w-full">
+          <thead>
+            <tr>
+              <th>
+                <label>
+                  <input type="checkbox" className="checkbox" />
+                </label>
+              </th>
+              <th>My Photo</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th></th>
+            </tr>
+          </thead>
+          {
                     order.map(order =><MyorderTable  order={order}/> )
                 }
+          </table>
+      </div>
+                
                    
                 </div>
             </section>   
